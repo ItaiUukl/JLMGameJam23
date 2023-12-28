@@ -8,8 +8,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Globals.ColorsEnum color;
     
-    private float _speed;
-    private Lane _lane;
+    public float _speed;
+    public Lane _lane;
+    private int _currSegment = 0;
+    private float _currAdvancement = 0f;
 
     public void Initialize(float speed, Lane lane)
     {
@@ -22,9 +24,16 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().isTrigger = true;
     }
 
-    public void Advance(Vector2 dest)
+    private void Update()
     {
-        transform.position = dest;
+        if (transform.position == _lane.GetSegmentAt(_currSegment))
+        {
+            _currSegment++;
+            _currAdvancement = 0;
+        }
+
+        _currAdvancement += _speed * Time.deltaTime;
+        transform.position = _lane.AdvanceTo(_currSegment, _currAdvancement);
     }
 
     private void OnTriggerEnter(Collider other)

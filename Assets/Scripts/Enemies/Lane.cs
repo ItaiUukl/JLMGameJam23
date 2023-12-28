@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private DefensePod _pod;
+    [SerializeField] private Transform playerPoint;
     [SerializeField] private List<Transform> lanePath;
     [SerializeField] private int segmentsNum = 100;
 
@@ -42,9 +43,15 @@ public class Lane : MonoBehaviour
         }
     }
 
-    public DefensePod pod
+    public Vector3 GetSegmentAt(int order)
     {
-        get { return _pod; }   // get method
-        set { _pod = value; }  // set method
+        if (order >= segments.Count) return Vector3.negativeInfinity;
+        return segments[order];
+    }
+
+    public Vector3 AdvanceTo(int segment, float advancement)
+    {
+        if (segment >= segments.Count) return Vector3.negativeInfinity;
+        return Vector3.Lerp(segments[0], segments[segment], advancement);
     }
 }
