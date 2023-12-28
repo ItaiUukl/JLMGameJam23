@@ -24,13 +24,6 @@ public class Globals : ScriptableObject
         Lane2 = 1,
         Lane3 = 2
     }
-
-    public enum LanesEnum
-    {
-        Lane1 = 0,
-        Lane2 = 1,
-        Lane3 = 2
-    }
     
     public static ColorsEnum GetMixedColor(ColorsEnum color1, ColorsEnum color2)
     {
