@@ -24,7 +24,7 @@ public class Globals : ScriptableObject
         Lane3 = 2
     }
     
-    public ColorsEnum GetMixedColor(ColorsEnum color1, ColorsEnum color2)
+    public static ColorsEnum GetMixedColor(ColorsEnum color1, ColorsEnum color2)
     {
         if ((int)color1 > 2 || (int)color2 > 2) return ColorsEnum.Clear;
 

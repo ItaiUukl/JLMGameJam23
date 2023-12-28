@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Vector3 Lane1Edge;
-    [SerializeField] private Vector3 Lane2Edge;
-    [SerializeField] private Vector3 Lane3Edge;
+    [SerializeField] private Lane lane1;
+    [SerializeField] private Lane lane2;
+    [SerializeField] private Lane lane3;
 
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
-    [SerializeField] private GameObject player3;
+    [SerializeField] private Player player1;
+    [SerializeField] private Player player2;
+    [SerializeField] private Player player3;
 
     [SerializeField] private float movementLockTime = 0.5f;
 
@@ -55,9 +55,13 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer(false, ref p3Lane, ref player3, ref lock3);
         }
+
+        UpdatePodColors(lane1.pod, Globals.LanesEnum.Lane1);
+        UpdatePodColors(lane2.pod, Globals.LanesEnum.Lane2);
+        UpdatePodColors(lane3.pod, Globals.LanesEnum.Lane3);
     }
 
-    void MovePlayer(bool moveUp, ref Globals.LanesEnum lane, ref GameObject player, ref float playerLock) {
+    void MovePlayer(bool moveUp, ref Globals.LanesEnum lane, ref Player player, ref float playerLock) {
         if (!isLocked(playerLock)) {
             lane = moveUp ? GetPrevLane(lane) : GetNextLane(lane);
             player.transform.position = GetLanePosition(lane);
@@ -91,11 +95,18 @@ public class PlayerController : MonoBehaviour
     
     Vector3 GetLanePosition(Globals.LanesEnum lane) {
         if (lane == Globals.LanesEnum.Lane1) {
-            return Lane1Edge;
+            return lane1.pod.GetPositionForPlayer();
         }
         if (lane == Globals.LanesEnum.Lane2) {
-            return Lane2Edge;
+            return lane2.pod.GetPositionForPlayer();
         }
-        return Lane3Edge;
+        return lane3.pod.GetPositionForPlayer();
+    }
+
+    void UpdatePodColors(DefensePod pod, Globals.LanesEnum laneIndex) {
+        pod.ResetColor();
+        if (p1Lane == laneIndex) pod.AddColor(player1.color);
+        if (p2Lane == laneIndex) pod.AddColor(player2.color);
+        if (p3Lane == laneIndex) pod.AddColor(player3.color);
     }
 }

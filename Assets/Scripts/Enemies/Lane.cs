@@ -6,7 +6,7 @@ using UnityEngine;
 public class Lane : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform playerPoint;
+    [SerializeField] private DefensePod _pod;
     [SerializeField] private List<Transform> lanePath;
     [SerializeField] private int segmentsNum = 100;
 
@@ -40,5 +40,11 @@ public class Lane : MonoBehaviour
             }
             segments.Add(currVec);
         }
+    }
+
+    public DefensePod pod
+    {
+        get { return _pod; }   // get method
+        set { _pod = value; }  // set method
     }
 }
