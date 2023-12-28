@@ -16,10 +16,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float movementLockTime = 0.5f;
 
-    private Globals.LanesEnum p1Lane;
-    private Globals.LanesEnum p2Lane;
-    private Globals.LanesEnum p3Lane;
-
     private float lock1;
     private float lock2;
     private float lock3;
@@ -31,29 +27,29 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey("a"))
         {
-            MovePlayer(true, ref p1Lane, ref player1, ref lock1);
+            MovePlayer(true, ref player1, ref lock1);
         }
         if (Input.GetKey("z"))
         {
-            MovePlayer(false, ref p1Lane, ref player1, ref lock1);
+            MovePlayer(false, ref player1, ref lock1);
         }
 
         if (Input.GetKey("g"))
         {
-            MovePlayer(true, ref p2Lane, ref player2, ref lock2);
+            MovePlayer(true, ref player2, ref lock2);
         }
         if (Input.GetKey("b"))
         {
-            MovePlayer(false, ref p2Lane, ref player2, ref lock2);
+            MovePlayer(false, ref player2, ref lock2);
         }
 
         if (Input.GetKey("l"))
         {
-            MovePlayer(true, ref p3Lane, ref player3, ref lock3);
+            MovePlayer(true, ref player3, ref lock3);
         }
         if (Input.GetKey(","))
         {
-            MovePlayer(false, ref p3Lane, ref player3, ref lock3);
+            MovePlayer(false, ref player3, ref lock3);
         }
 
         UpdatePodColors(lane1.pod, Globals.LanesEnum.Lane1);
@@ -61,10 +57,10 @@ public class PlayerController : MonoBehaviour
         UpdatePodColors(lane3.pod, Globals.LanesEnum.Lane3);
     }
 
-    void MovePlayer(bool moveUp, ref Globals.LanesEnum lane, ref Player player, ref float playerLock) {
+    void MovePlayer(bool moveUp, ref Player player, ref float playerLock) {
         if (!isLocked(playerLock)) {
-            lane = moveUp ? GetPrevLane(lane) : GetNextLane(lane);
-            player.transform.position = GetLanePosition(lane);
+            player.lane = moveUp ? GetPrevLane(player.lane) : GetNextLane(player.lane);
+            player.transform.position = GetLanePosition(player.lane);
             LockPlayer(ref playerLock);
         }
     }
@@ -105,8 +101,8 @@ public class PlayerController : MonoBehaviour
 
     void UpdatePodColors(DefensePod pod, Globals.LanesEnum laneIndex) {
         pod.ResetColor();
-        if (p1Lane == laneIndex) pod.AddColor(player1.color);
-        if (p2Lane == laneIndex) pod.AddColor(player2.color);
-        if (p3Lane == laneIndex) pod.AddColor(player3.color);
+        if (player1.lane == laneIndex) pod.AddColor(player1.color);
+        if (player2.lane == laneIndex) pod.AddColor(player2.color);
+        if (player3.lane == laneIndex) pod.AddColor(player3.color);
     }
 }
