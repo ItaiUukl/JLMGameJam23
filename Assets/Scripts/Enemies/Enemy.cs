@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Globals.ColorsEnum _color;
@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
 
     private float _speed;
     private Lane _lane;
+    private int _currSegment = 0;
+    private float _currAdvancement = 0f;
+    private Vector3 _startingPos;
 
     private Action<Enemy, DefensePod> _onPodCollision;
 
@@ -25,16 +28,25 @@ public class Enemy : MonoBehaviour
         _speed = speed;
         _lane = lane;
         _onPodCollision = onPodCollision;
+        _startingPos = transform.position;
     }
     
     private void Start()
     {
         GetComponent<Collider2D>().isTrigger = true;
+        _startingPos = transform.position;
     }
 
-    public void Advance(Vector2 dest)
+    private void Update()
     {
-        transform.position = dest;
+        if (transform.position == _lane.GetSegmentAt(_currSegment+1))
+        {
+            _currSegment++;
+            _currAdvancement = 0;
+        }
+
+        _currAdvancement += _speed * Time.deltaTime;
+        transform.position = Vector3.Lerp(_lane.GetSegmentAt(_currSegment),_lane.GetSegmentAt(_currSegment+1), _currAdvancement);
     }
 
     private void OnTriggerEnter(Collider other)
