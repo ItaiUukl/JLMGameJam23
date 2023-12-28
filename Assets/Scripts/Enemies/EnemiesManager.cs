@@ -8,11 +8,12 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] private List<SpawnerSO> waves;
     [SerializeField] private List<Lane> lanes;
 
+    private Action<Enemy, DefensePod> _onEnemyPodCollision;
+
     private List<Enemy> _createdEnemies;
     private Dictionary<Globals.ColorsEnum, int> _enemiesByColor;
 
-    private void Update()
-    {
+    public void OnEnemyDefeat(Enemy enemy) {
         
     }
 }

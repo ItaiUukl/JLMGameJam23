@@ -6,9 +6,11 @@ public class DefensePod : MonoBehaviour
 {
     [SerializeField] private Globals.LanesEnum lane;
     private Globals.ColorsEnum _color;
-
-    public Globals.ColorsEnum GetColor() {
-        return _color;
+    
+    public Globals.ColorsEnum color
+    {
+        get { return _color; }   // get method
+        set { _color = value; }  // set method
     }
 
     public Vector3 GetPositionForPlayer() {
