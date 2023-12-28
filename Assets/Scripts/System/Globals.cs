@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,13 @@ public class Globals : ScriptableObject
         Purple = 3,
         Green = 4,
         Orange = 5
+    }
+
+    public enum LanesEnum
+    {
+        Lane1 = 0,
+        Lane2 = 1,
+        Lane3 = 2
     }
     
     public ColorsEnum GetMixedColor(ColorsEnum color1, ColorsEnum color2)
