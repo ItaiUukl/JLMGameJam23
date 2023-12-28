@@ -8,13 +8,21 @@ public class Globals : ScriptableObject
 {
     public enum ColorsEnum
     {
-        Clear = -1,
-        Blue = 0,
-        Red = 1,
-        Yellow = 2,
-        Purple = 3,
-        Green = 4,
-        Orange = 5
+        Clear = 1,
+        Blue = 2,
+        Red = 3,
+        Yellow = 5,
+        Purple = 6,
+        Green = 10,
+        Orange = 15,
+        Brown = 30
+    }
+
+    public enum LanesEnum
+    {
+        Lane1 = 0,
+        Lane2 = 1,
+        Lane3 = 2
     }
 
     public enum LanesEnum
@@ -24,11 +32,13 @@ public class Globals : ScriptableObject
         Lane3 = 2
     }
     
-    public ColorsEnum GetMixedColor(ColorsEnum color1, ColorsEnum color2)
+    public static ColorsEnum GetMixedColor(ColorsEnum color1, ColorsEnum color2)
     {
-        if ((int)color1 > 2 || (int)color2 > 2) return ColorsEnum.Clear;
+        var minColorValue = Math.Min((int)color1, (int)color2);
+        var maxColorValue = Math.Max((int)color1, (int)color2);
 
-        return (ColorsEnum)((int)color1 + (int)color2 + 3);
+        if (maxColorValue % minColorValue == 0) return (ColorsEnum)maxColorValue;
+        return (ColorsEnum)(maxColorValue * minColorValue);
     }
 
 }
