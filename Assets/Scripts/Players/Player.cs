@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Globals.ColorsEnum _color;
     private Globals.LanesEnum _lane;
-    
+
     public Globals.ColorsEnum color
     {
         get { return _color; }   // get method
