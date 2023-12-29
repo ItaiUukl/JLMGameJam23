@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: 2
+  Life: 3
 --- !u!65 &109819471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -495,7 +496,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a311753354f2345d8966bcea699585a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -747,7 +748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 200716007876330912, guid: eec181ae8bb2dc2408776e981622257b, type: 3}
       propertyPath: m_Name
-      value: Lane2 (1)
+      value: Lane3
       objectReference: {fileID: 0}
     - target: {fileID: 3190786438323566876, guid: eec181ae8bb2dc2408776e981622257b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -821,6 +822,10 @@ PrefabInstance:
       propertyPath: _pod
       value: 
       objectReference: {fileID: 69932326}
+    - target: {fileID: 7399884246309317623, guid: eec181ae8bb2dc2408776e981622257b, type: 3}
+      propertyPath: laneIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7399884246309317623, guid: eec181ae8bb2dc2408776e981622257b, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -1066,6 +1071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesManager: {fileID: 1825521683}
+  playerController: {fileID: 343691842}
 --- !u!4 &1453174113
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,6 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: 5
+  Life: 3
 --- !u!65 &1540071713
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1155,7 +1162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 24ea15a755f2a442fa1aa5803d8d0d2a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1319,6 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: 3
+  Life: 3
 --- !u!65 &2070146638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1360,7 +1368,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 34e47e058e44d469c9447ebb3657506d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1714,6 +1722,10 @@ PrefabInstance:
       propertyPath: _pod
       value: 
       objectReference: {fileID: 64338629}
+    - target: {fileID: 7399884246309317623, guid: eec181ae8bb2dc2408776e981622257b, type: 3}
+      propertyPath: laneIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7399884246309317623, guid: eec181ae8bb2dc2408776e981622257b, type: 3}
       propertyPath: spawnPoint
       value: 

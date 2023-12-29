@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
         player1.transform.position = GetLanePosition(player1.lane);
         player2.transform.position = GetLanePosition(player2.lane);
         player3.transform.position = GetLanePosition(player3.lane);
+        UpdatePodColors(lane1);
+        UpdatePodColors(lane2);
+        UpdatePodColors(lane3);
     }
 
     private void Update() {
