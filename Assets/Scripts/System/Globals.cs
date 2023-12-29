@@ -33,5 +33,11 @@ public class Globals : ScriptableObject
         if (maxColorValue % minColorValue == 0) return (ColorsEnum)maxColorValue;
         return (ColorsEnum)(maxColorValue * minColorValue);
     }
+    
+    
+    
+    public static LayerMask PlayerLayer = LayerMask.NameToLayer("Player");
+    public static LayerMask EnemyLayer = LayerMask.NameToLayer("Enemy");
+    public static LayerMask PodLayer = LayerMask.NameToLayer("Pod");
 
 }

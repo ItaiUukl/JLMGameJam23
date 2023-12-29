@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
-    [SerializeField] private Transform spawnPoint;    
+    [SerializeField] public Transform spawnPoint;    
     [SerializeField] private DefensePod _pod;
     [SerializeField] private List<Transform> lanePath;
     [SerializeField] private int segmentsNum = 100;

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,11 +21,18 @@ public class GameManager : MonoBehaviour
     }
 
     void OnEnemyDefeat(Enemy enemy) {
+        Debug.Log("yay");
         _score += enemy.scoreWorth;
         enemiesManager.OnEnemyDefeat(enemy);
     }
 
     void OnEnemyDamage() {
+        Debug.Log("ouch");
         _life -= 1;
+    }
+
+    private void Start()
+    {
+        enemiesManager.InitiateEnemies(OnEnemyReachPod);
     }
 }

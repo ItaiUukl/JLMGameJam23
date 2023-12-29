@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     private float _speed;
     private Lane _lane;
+    private int _id;
     private int _currSegment = 0;
     private float _currAdvancement = 0f;
     private Vector3 _startingPos;
@@ -23,18 +24,25 @@ public class Enemy : MonoBehaviour
         set { _color = value; }
     }
 
-    public void Initialize(float speed, Lane lane, Action<Enemy, DefensePod> onPodCollision)
+    
+    public int Id
     {
+        get { return _id; }
+        set { _id = value; }
+    }
+    
+    public void Initialize(int idInWave, float speed, Lane lane, Action<Enemy, DefensePod> onPodCollision)
+    {
+        Id = idInWave;
         _speed = speed;
         _lane = lane;
         _onPodCollision = onPodCollision;
-        _startingPos = transform.position;
+        transform.position = _lane.spawnPoint.position;
     }
     
     private void Start()
     {
-        GetComponent<Collider2D>().isTrigger = true;
-        _startingPos = transform.position;
+        GetComponent<Collider>().isTrigger = true;
     }
 
     private void Update()
@@ -51,6 +59,9 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        throw new NotImplementedException();
+        if (other.gameObject.layer == Globals.PodLayer)
+        {
+            _onPodCollision(this, _lane.pod);
+        }
     }
 }
