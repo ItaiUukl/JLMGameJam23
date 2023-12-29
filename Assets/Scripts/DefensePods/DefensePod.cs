@@ -20,10 +20,11 @@ public class DefensePod : MonoBehaviour
     
     public void SetColor(Globals.ColorsEnum color) {
         _color = color;
+        GetComponent<Renderer>().material.SetColor("_Color", Globals.GetColor(color));
     }
 
     public void ResetColor() {
-        _color = Globals.ColorsEnum.Clear;
+        SetColor(Globals.ColorsEnum.Clear);
     }
 
     public void AddColor(Globals.ColorsEnum color) {
