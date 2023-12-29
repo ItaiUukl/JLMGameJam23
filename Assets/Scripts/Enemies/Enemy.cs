@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Globals.ColorsEnum _color;
+    [SerializeField] public Globals.ColorsEnum color;
     [SerializeField] public int scoreWorth;
 
     private float _speed;
@@ -17,12 +17,6 @@ public class Enemy : MonoBehaviour
     private Vector3 _startingPos;
 
     private Action<Enemy, DefensePod> _onPodCollision;
-
-    public Globals.ColorsEnum color
-    {
-        get { return _color; }
-        set { _color = value; }
-    }
 
     
     public int Id

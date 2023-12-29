@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 3172354839152228771, guid: 8cd13437ee765e6478ef6be83909a289, type: 3}
   sizeRange: {x: 5, y: 8}
   spawnRateRange: {x: 5, y: 7}
-  speedRange: {x: 2, y: 3}
+  speedRange: {x: 10, y: 15}

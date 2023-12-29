@@ -25,36 +25,33 @@ public class PlayerController : MonoBehaviour
         UpdatePlayerLock(ref lock2);
         UpdatePlayerLock(ref lock3);
 
-        if (Input.GetKey("a"))
-        {
-            MovePlayer(true, ref player1, ref lock1);
-        }
-        if (Input.GetKey("z"))
-        {
-            MovePlayer(false, ref player1, ref lock1);
-        }
-
-        if (Input.GetKey("g"))
-        {
-            MovePlayer(true, ref player2, ref lock2);
-        }
-        if (Input.GetKey("b"))
-        {
-            MovePlayer(false, ref player2, ref lock2);
-        }
-
-        if (Input.GetKey("l"))
-        {
-            MovePlayer(true, ref player3, ref lock3);
-        }
-        if (Input.GetKey(","))
-        {
-            MovePlayer(false, ref player3, ref lock3);
-        }
-
+        UsePlayerKeyPair(ref player1, ref lock1, "a", "z");
+        UsePlayerKeyPair(ref player2, ref lock2, "g", "b");
+        UsePlayerKeyPair(ref player3, ref lock3, "l", ",");
+        
         UpdatePodColors(lane1.pod, Globals.LanesEnum.Lane1);
         UpdatePodColors(lane2.pod, Globals.LanesEnum.Lane2);
         UpdatePodColors(lane3.pod, Globals.LanesEnum.Lane3);
+    }
+
+    void UsePlayerKeyPair(ref Player player, ref float playerLock, string upKey, string downKey)
+    {
+        if (Input.GetKeyUp(upKey))
+        {
+            UnlockPlayer(ref playerLock);
+        }
+        else if (Input.GetKey(upKey))
+        {
+            MovePlayer(true, ref player, ref playerLock);
+        }
+        if (Input.GetKeyUp(downKey))
+        {
+            UnlockPlayer(ref playerLock);
+        }
+        else if (Input.GetKey(downKey))
+        {
+            MovePlayer(false, ref player, ref playerLock);
+        }
     }
 
     void MovePlayer(bool moveUp, ref Player player, ref float playerLock) {
@@ -73,6 +70,10 @@ public class PlayerController : MonoBehaviour
         playerLock = movementLockTime;
     }
 
+    void UnlockPlayer(ref float playerLock) {
+        playerLock = 0;
+    }
+    
     void UpdatePlayerLock(ref float playerLock) {
         if (isLocked(playerLock)) {
             playerLock -= Time.deltaTime;
