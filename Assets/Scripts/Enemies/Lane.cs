@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
+    public int TowerLife = 3;
+    [SerializeField] public Globals.LanesEnum laneIndex;    
     [SerializeField] public Transform spawnPoint;    
     [SerializeField] private DefensePod _pod;
     [SerializeField] private List<Transform> lanePath;
@@ -48,5 +50,13 @@ public class Lane : MonoBehaviour
     {
         if (order >= segments.Count) return segments[^1];
         return segments[order];
+    }
+
+    public void OnTowerDamage() {
+        if (TowerLife == 0) {
+            Debug.Log(laneIndex + ": Tower is Gone!");
+        }
+        TowerLife -= 1;
+        Debug.Log(laneIndex + ": Tower is Hit!");
     }
 }

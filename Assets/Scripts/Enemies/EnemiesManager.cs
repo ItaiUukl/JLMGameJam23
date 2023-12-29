@@ -10,7 +10,7 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] private List<WaveSO> waves;
     [SerializeField] private List<Lane> lanes;
 
-    private Action<Enemy, DefensePod> _onEnemyPodCollision;
+    private Action<Enemy> _onEnemyPodCollision;
     
     private Dictionary<int, Stack<int>> _disabledEnemies = new Dictionary<int, Stack<int>>();
     private Dictionary<int, List<Enemy>> _enemiesByIndex = new Dictionary<int, List<Enemy>>();
@@ -22,7 +22,7 @@ public class EnemiesManager : MonoBehaviour
         _disabledEnemies[enemy.Id].Push(_enemiesByIndex[enemy.Id].Count - 1);
     }
 
-    public void InitiateEnemies(Action<Enemy, DefensePod> collisionAction)
+    public void InitiateEnemies(Action<Enemy> collisionAction)
     {
         _onEnemyPodCollision = collisionAction;
         StartCoroutine(EnemyWavesRoutine());

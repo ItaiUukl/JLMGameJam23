@@ -6,29 +6,52 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int _life = 3;
     private int _score = 0;
 
     [SerializeField] private EnemiesManager enemiesManager;
+    [SerializeField] private PlayerController playerController;
 
-    void OnEnemyReachPod(Enemy enemy, DefensePod pod) {
-        if (enemy.color == pod.color) {
+    void OnEnemyReachPod(Enemy enemy) {
+        if (enemy.color == enemy.Lane.pod.color) {
             OnEnemyDefeat(enemy);
         }
         else {
-            OnEnemyDamage();
+            OnEnemyDamage(enemy);
         }
     }
 
     void OnEnemyDefeat(Enemy enemy) {
-        Debug.Log("yay");
         _score += enemy.scoreWorth;
+        UpdateUI();
         enemiesManager.OnEnemyDefeat(enemy);
     }
 
-    void OnEnemyDamage() {
-        Debug.Log("ouch");
-        _life -= 1;
+    void OnEnemyDamage(Enemy enemy) {
+        var lane = enemy.Lane;
+        var playersInLane = playerController.GetPlayersInLane(lane);
+
+        if (playersInLane.Count > 0) {
+            foreach (var player in playersInLane)
+            {
+                playerController.OnPlayerDamage(player);
+            }
+        }
+        else {
+            if (enemy.Lane.TowerLife == 0) {
+                GameOver();
+                return;
+            }
+            enemy.Lane.OnTowerDamage();
+        }
+        enemiesManager.OnEnemyDefeat(enemy);
+    }
+
+    void GameOver() {
+        Debug.Log("GGGGAAAAMEEEE OOOOVERRERRRRR");
+    }
+
+    void UpdateUI() {
+        Debug.Log("SSSCCCOOREEE: " + _score);
     }
 
     private void Start()

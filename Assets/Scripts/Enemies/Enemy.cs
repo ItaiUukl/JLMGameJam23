@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public Globals.ColorsEnum color;
-    [SerializeField] public int scoreWorth;
+    [SerializeField] public int scoreWorth = 10;
 
     private float _speed;
     private Lane _lane;
@@ -16,16 +16,21 @@ public class Enemy : MonoBehaviour
     private float _currAdvancement = 0f;
     private Vector3 _startingPos;
 
-    private Action<Enemy, DefensePod> _onPodCollision;
+    private Action<Enemy> _onPodCollision;
 
-    
     public int Id
     {
         get { return _id; }
         set { _id = value; }
     }
     
-    public void Initialize(int idInWave, float speed, Lane lane, Action<Enemy, DefensePod> onPodCollision)
+    public Lane Lane
+    {
+        get { return _lane; }
+        set { _lane = value; }
+    }
+    
+    public void Initialize(int idInWave, float speed, Lane lane, Action<Enemy> onPodCollision)
     {
         Id = idInWave;
         _speed = speed;
@@ -55,7 +60,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.layer == Globals.PodLayer)
         {
-            _onPodCollision(this, _lane.pod);
+            _onPodCollision(this);
         }
     }
 }

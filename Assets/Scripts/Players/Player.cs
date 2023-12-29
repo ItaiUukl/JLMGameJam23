@@ -6,7 +6,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Globals.ColorsEnum _color;
-    private Globals.LanesEnum _lane;
+    private Lane _lane;
+
+    public int Life = 3;
 
     public Globals.ColorsEnum color
     {
@@ -14,7 +16,7 @@ public class Player : MonoBehaviour
         set { _color = value; }  // set method
     }
     
-    public Globals.LanesEnum lane
+    public Lane lane
     {
         get { return _lane; }   // get method
         set { _lane = value; }  // set method
