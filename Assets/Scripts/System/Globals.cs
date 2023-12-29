@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Globals : ScriptableObject
 {
     public enum ColorsEnum
@@ -34,7 +33,16 @@ public class Globals : ScriptableObject
         return (ColorsEnum)(maxColorValue * minColorValue);
     }
     
-    
+    public static Color GetColor(ColorsEnum name) {
+        if (name == ColorsEnum.Blue) return Color.blue;
+        if (name == ColorsEnum.Red) return Color.red;
+        if (name == ColorsEnum.Yellow) return Color.yellow;
+        if (name == ColorsEnum.Purple) return new Color(0.48f, 0.06f, 0.8f);
+        if (name == ColorsEnum.Green) return Color.green;
+        if (name == ColorsEnum.Orange) return new Color(1, 0.652f, 0.27f);
+        if (name == ColorsEnum.Brown) return new Color(0.33f, 0.22f, 0.16f);
+        return Color.white;
+    }
     
     public static LayerMask PlayerLayer = LayerMask.NameToLayer("Player");
     public static LayerMask EnemyLayer = LayerMask.NameToLayer("Enemy");

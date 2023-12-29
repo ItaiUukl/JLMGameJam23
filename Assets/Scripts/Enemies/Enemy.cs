@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         GetComponent<Collider>().isTrigger = true;
+        GetComponent<Renderer>().material.SetColor("_Color", Globals.GetColor(color));
     }
 
     private void Update()
