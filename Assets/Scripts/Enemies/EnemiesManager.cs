@@ -89,6 +89,7 @@ public class EnemiesManager : MonoBehaviour
         }
     }
     
+    
     private IEnumerator EnemyWavesRoutine()
     {
         for (int i = 0; i < waves.Count; i++)

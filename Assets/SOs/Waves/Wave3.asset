@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4ec2a7c635aef41bfc2c02dec98e0d, type: 3}
+  m_Name: Wave3
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 4044559573857943593, guid: 9c8328bbbbd3a314c97ed37bb924eb90, type: 3}
+  - {fileID: 3735315978077308584, guid: 273dc150edfa1b94ebcd63591d8d8e71, type: 3}
+  - {fileID: 4503098399634514583, guid: 330716dd3d12b604eba05b058800f612, type: 3}
+  - {fileID: 2660754911198980417, guid: af51ce840a3c5d44e95285f4563393d2, type: 3}
+  - {fileID: 9212098634364848154, guid: 27c64d318a36926449e4699a8c5f5702, type: 3}
+  - {fileID: 6861460204790529261, guid: 0290803b22eefa04aaa14f73c183bd46, type: 3}
+  - {fileID: 7915938131338479418, guid: 9c830a7e34f80444b86f6dede240f17d, type: 3}
+  sizeRange: {x: 500, y: 550}
+  spawnRateRange: {x: 0.5, y: 3}
+  speedRange: {x: 15, y: 19}

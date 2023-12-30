@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemiesManager enemiesManager;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private TextMeshProUGUI gameOverText;
 
     void OnEnemyReachPod(Enemy enemy) {
         if (enemy.color == enemy.Lane.pod.color) {
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
 
     void GameOver() {
-        Debug.Log("GGGGAAAAMEEEE OOOOVERRERRRRR");
+        gameOverText.gameObject.SetActive(true);
     }
 
     void UpdateUI() {
@@ -57,5 +59,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         enemiesManager.InitiateEnemies(OnEnemyReachPod);
+        AudioManager.Instance.Play("soundtrack");
+        
     }
 }
