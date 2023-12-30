@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     private Lane _lane;
 
     public int Life = 3;
+    [SerializeField] private TextMeshProUGUI LifeText;
 
     public Globals.ColorsEnum color
     {
@@ -20,5 +22,11 @@ public class Player : MonoBehaviour
     {
         get { return _lane; }   // get method
         set { _lane = value; }  // set method
+    }
+
+    public void GetDamage()
+    {
+        Life -= 1;
+        LifeText.text = Life.ToString();
     }
 }

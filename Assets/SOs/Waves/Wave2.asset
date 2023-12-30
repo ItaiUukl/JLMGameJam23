@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Wave2
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 5927155406653772414, guid: 6d097874df4c4d045a6ab74956dc4507, type: 3}
-  - {fileID: 3172354839152228771, guid: 8cd13437ee765e6478ef6be83909a289, type: 3}
-  sizeRange: {x: 80, y: 100}
-  spawnRateRange: {x: 2, y: 7}
-  speedRange: {x: 1, y: 10}
+  - {fileID: 4044559573857943593, guid: 9c8328bbbbd3a314c97ed37bb924eb90, type: 3}
+  - {fileID: 3735315978077308584, guid: 273dc150edfa1b94ebcd63591d8d8e71, type: 3}
+  - {fileID: 4503098399634514583, guid: 330716dd3d12b604eba05b058800f612, type: 3}
+  sizeRange: {x: 20, y: 25}
+  spawnRateRange: {x: 1, y: 4}
+  speedRange: {x: 12, y: 14}

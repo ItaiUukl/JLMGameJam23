@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fb0a5b40f6b0b40951fddfa2ebaaf4, type: 3}
   m_Name: Soundtrack
   m_EditorClassIdentifier: 
-  soundName: 
-  clip: {fileID: 0}
+  soundName: soundtrack
+  clip: {fileID: 8300000, guid: bfba8c0e36f2cf146ad6a3ef6c02d278, type: 3}
   clipsList: []
   volume: 1
   pitch: 1
-  loop: 0
+  loop: 1
   overlap: 0
   ignorePause: 0
   source: {fileID: 0}

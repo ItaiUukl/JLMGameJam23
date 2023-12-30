@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Profiling.Memory.Experimental;
+using TMPro;
 using UnityEngine;
 
 public class Lane : MonoBehaviour
@@ -12,6 +10,7 @@ public class Lane : MonoBehaviour
     [SerializeField] private DefensePod _pod;
     [SerializeField] private List<Transform> lanePath;
     [SerializeField] private int segmentsNum = 100;
+    [SerializeField] private TextMeshProUGUI LifeText;
 
     private List<Vector3> segments = new List<Vector3>();
     
@@ -53,10 +52,7 @@ public class Lane : MonoBehaviour
     }
 
     public void OnTowerDamage() {
-        if (TowerLife == 0) {
-            Debug.Log(laneIndex + ": Tower is Gone!");
-        }
         TowerLife -= 1;
-        Debug.Log(laneIndex + ": Tower is Hit!");
+        LifeText.text = TowerLife.ToString();
     }
 }

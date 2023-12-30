@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     private int _id;
     private int _currSegment = 0;
     private float _currAdvancement = 0f;
-    private Vector3 _startingPos;
 
     private Action<Enemy> _onPodCollision;
 
@@ -36,13 +35,14 @@ public class Enemy : MonoBehaviour
         _speed = speed;
         _lane = lane;
         _onPodCollision = onPodCollision;
+        _currSegment = 0;
+        _currAdvancement = 0f;
         transform.position = _lane.spawnPoint.position;
     }
     
     private void Start()
     {
         GetComponent<Collider>().isTrigger = true;
-        GetComponent<Renderer>().material.SetColor("_Color", Globals.GetColor(color));
     }
 
     private void Update()

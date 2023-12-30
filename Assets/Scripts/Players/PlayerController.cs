@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +33,14 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Time.timeScale = (Time.timeScale + 1) % 2;
+        }
         UpdatePlayerLock(ref lock1);
         UpdatePlayerLock(ref lock2);
         UpdatePlayerLock(ref lock3);
@@ -136,12 +143,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnPlayerDamage(Player player) {
+        player.GetDamage();
         if (player.Life == 0) {
             player.gameObject.SetActive(false);
-            Debug.Log(player.color + ": I'm a goner :(");
-            return;
         }
-        player.Life -= 1;
-        Debug.Log(player.color + ": Ouch");
     }
 }
